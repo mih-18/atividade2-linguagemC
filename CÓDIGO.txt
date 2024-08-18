@@ -1,0 +1,73 @@
+#include <stdio.h>
+
+int main() {
+    // Declaração das variáveis
+    char nome1[50], nome2[50], nome3[50], nome4[50];
+    int idade1, idade2, idade3, idade4;
+    int idade_min;
+    char nome_min[50];
+
+    // Solicita os dados do usuário
+    printf("Digite o nome da primeira pessoa: ");
+    fgets(nome1, sizeof(nome1), stdin);
+    nome1[strcspn(nome1, "\n")] = '\0'; // Remove o newline no final do nome
+
+    printf("Digite a idade da primeira pessoa: ");
+    scanf("%d", &idade1);
+
+    getchar(); // Limpa o buffer do teclado
+
+    printf("Digite o nome da segunda pessoa: ");
+    fgets(nome2, sizeof(nome2), stdin);
+    nome2[strcspn(nome2, "\n")] = '\0'; // Remove o newline no final do nome
+
+    printf("Digite a idade da segunda pessoa: ");
+    scanf("%d", &idade2);
+
+    getchar(); // Limpa o buffer do teclado
+
+    printf("Digite o nome da terceira pessoa: ");
+    fgets(nome3, sizeof(nome3), stdin);
+    nome3[strcspn(nome3, "\n")] = '\0'; // Remove o newline no final do nome
+
+    printf("Digite a idade da terceira pessoa: ");
+    scanf("%d", &idade3);
+
+    getchar(); // Limpa o buffer do teclado
+
+    printf("Digite o nome da quarta pessoa: ");
+    fgets(nome4, sizeof(nome4), stdin);
+    nome4[strcspn(nome4, "\n")] = '\0'; // Remove o newline no final do nome
+
+    printf("Digite a idade da quarta pessoa: ");
+    scanf("%d", &idade4);
+
+    // Inicializa a idade mínima com a primeira idade
+    idade_min = idade1;
+    // Presume o nome correspondente à idade mínima como o nome da primeira pessoa
+    snprintf(nome_min, sizeof(nome_min), "%s", nome1);
+
+    // Verifica se a idade da segunda pessoa é menor
+    if (idade2 < idade_min) {
+        idade_min = idade2;
+        snprintf(nome_min, sizeof(nome_min), "%s", nome2);
+    }
+
+    // Verifica se a idade da terceira pessoa é menor
+    if (idade3 < idade_min) {
+        idade_min = idade3;
+        snprintf(nome_min, sizeof(nome_min), "%s", nome3);
+    }
+
+    // Verifica se a idade da quarta pessoa é menor
+    if (idade4 < idade_min) {
+        idade_min = idade4;
+        snprintf(nome_min, sizeof(nome_min), "%s", nome4);
+    }
+
+    // Exibe a pessoa mais nova
+    printf("A pessoa mais nova é %s com %d anos.\n", nome_min, idade_min);
+
+    return 0;
+}
+S
